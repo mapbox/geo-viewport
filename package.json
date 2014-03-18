@@ -1,0 +1,31 @@
+{
+  "name": "geo-viewport",
+  "version": "0.0.0",
+  "description": "convert between viewports and extents",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tmcw/geo-viewport.git"
+  },
+  "keywords": [
+    "geographic",
+    "viewport",
+    "zoom",
+    "scale"
+  ],
+  "author": "Tom MacWright",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/tmcw/geo-viewport/issues"
+  },
+  "homepage": "https://github.com/tmcw/geo-viewport",
+  "dependencies": {
+    "sphericalmercator": "~1.0.2"
+  },
+  "devDependencies": {
+    "tap": "~0.4.8"
+  }
+}
