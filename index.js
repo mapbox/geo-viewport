@@ -22,6 +22,25 @@ module.exports.viewport = function(bounds, dimensions) {
     return center.concat([Math.floor(Math.pow(10, baseLog(dim, now)))]);
 };
 
+module.exports.bounds = function(viewport, zoom, dimensions) {
+    if (viewport.lon !== undefined) {
+        viewport = [
+            viewport.lon,
+            viewport.lat
+        ];
+    }
+    var px = merc.px(viewport, zoom);
+    var tl = merc.ll([
+        px[0] - (dimensions[0] / 2),
+        px[1] - (dimensions[1] / 2)
+    ], zoom);
+    var br = merc.ll([
+        px[0] + (dimensions[0] / 2),
+        px[1] + (dimensions[1] / 2)
+    ], zoom);
+    return [tl[0], br[1], br[0], tl[1]];
+};
+
 function baseLog(x, y) {
     return Math.log(y) / Math.log(x);
 }

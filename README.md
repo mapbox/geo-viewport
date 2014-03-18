@@ -31,3 +31,8 @@ viewport.viewport([
 
 Given a `NESW` array of bounds and a `[x, y]` array of pixel
 dimensions, return a `[lon, lat, zoom]` viewport.
+
+`bounds(center, zoom, dimensions)`
+
+Given a centerpoint as `[lon, lat]` or `{ lon, lat }`, a zoom,
+and dimensions as `[x, y]`, return a bounding box.
