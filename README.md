@@ -1,6 +1,7 @@
 # geo-viewport
 
-Turns bounding boxes / extents into centerpoint & zoom combos for static maps.
+Turns bounding boxes / extents into centerpoint & zoom
+combos for static maps.
 
 ## install
 
@@ -19,18 +20,21 @@ viewport.viewport([
 ], [640, 480])
 
 // yields
-[
-  5.760955810546875,
-  45.18978009667531,
-  5]
+{
+    center: [
+        5.7604079999999955,
+        45.189756500000016
+    ],
+    zoom: 11
+}
 ```
 
 ## api
 
 `viewport(bounds, dimensions)`
 
-Given a `NESW` array of bounds and a `[x, y]` array of pixel
-dimensions, return a `[lon, lat, zoom]` viewport.
+Given a `WSEN` array of bounds and a `[x, y]` array of pixel
+dimensions, return a `{ center: [lon, lat], zoom: zoom }` viewport.
 
 `bounds(center, zoom, dimensions)`
 

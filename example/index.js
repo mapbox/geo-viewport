@@ -17,9 +17,11 @@ fout.write(staticOf(ext, [1000, 800]));
 fout.write(staticOf(ext, [500, 300]));
 fout.write(staticOf(ext, [200, 100]));
 fout.write(staticOf(ext, [100, 100]));
+fout.write(staticOf(ext, [10, 10]));
 
 fout.write(staticOf(extsm, [1000, 800]));
 fout.write(staticOf(extsm, [500, 300]));
 fout.write(staticOf(extsm, [200, 100]));
 fout.write(staticOf(extsm, [100, 100]));
+fout.write(staticOf(extsm, [10, 10]));
 opener('index.html');

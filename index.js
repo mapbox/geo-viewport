@@ -14,15 +14,12 @@ function viewport(bounds, dimensions, minzoom, maxzoom) {
         height = bl[1] - tr[1],
         ratios = [width / dimensions[0], height / dimensions[1]],
         center = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
-        now = (ratios[0] > ratios[1]) ? width : height,
-        dim = (ratios[0] > ratios[1]) ? dimensions[0] : dimensions[1],
-        adjusted = Math.floor(base * baseLog(now, dim)),
+        adjusted = Math.floor(Math.min(
+            base - (Math.log(ratios[0]) / Math.log(2)),
+            base - (Math.log(ratios[1]) / Math.log(2)))),
         zoom = Math.max(minzoom, Math.min(maxzoom, adjusted));
 
-    return {
-        center: center,
-        zoom: zoom
-    };
+    return { center: center, zoom: zoom };
 }
 
 function bounds(viewport, zoom, dimensions) {
