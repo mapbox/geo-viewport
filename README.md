@@ -9,6 +9,12 @@ combos for static maps.
 
     npm install --save geo-viewport
 
+Or use a plugin:
+
+```html
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
+```
+
 ## example
 
 ```js
