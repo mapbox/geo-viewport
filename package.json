@@ -4,7 +4,8 @@
   "description": "convert between viewports and extents",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap test/*.js",
+    "build": "browserify -s geoViewport index.js | uglifyjs -c > geo-viewport.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,15 @@
   "author": "Tom MacWright",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/tmcw/geo-viewport/issues"
+    "url": "https://github.com/mapbox/geo-viewport/issues"
   },
-  "homepage": "https://github.com/tmcw/geo-viewport",
+  "homepage": "https://github.com/mapbox/geo-viewport",
   "dependencies": {
     "sphericalmercator": "~1.0.2"
   },
   "devDependencies": {
-    "tap": "~0.4.8"
+    "tap": "~0.4.8",
+    "browserify": "~3.46.0",
+    "uglifyjs": "~2.3.6"
   }
 }
