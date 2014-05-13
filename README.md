@@ -17,6 +17,8 @@ Or use a plugin:
 
 ## example
 
+[Live example with Mapbox Static Map API](https://www.mapbox.com/mapbox.js/example/v1.0.0/static-map-from-bounds-with-geo-viewport/)
+
 ```js
 var viewport = require('geo-viewport');
 
