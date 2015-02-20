@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mapbox/geo-viewport.svg?branch=v0.1.0)](https://travis-ci.org/mapbox/geo-viewport)
+[![Build Status](https://travis-ci.org/mapbox/geo-viewport.svg)](https://travis-ci.org/mapbox/geo-viewport)
 
 # geo-viewport
 
