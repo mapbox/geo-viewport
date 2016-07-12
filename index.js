@@ -40,7 +40,3 @@ function bounds(viewport, zoom, dimensions) {
     ], zoom);
     return [tl[0], br[1], br[0], tl[1]];
 }
-
-function baseLog(x, y) {
-    return Math.log(y) / Math.log(x);
-}
