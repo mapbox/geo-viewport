@@ -44,3 +44,12 @@ test('viewport', function(t) {
 
     t.end();
 });
+
+test('bounds for 512px tiles', function(t) {
+    t.deepEqual(
+        viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512),
+        [-77.03945338726044, 38.89697827424865, -77.03365981578827, 38.89843950894583]
+    );
+
+    t.end();
+});
