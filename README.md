@@ -15,7 +15,7 @@ or a script tag.
 Or use a plugin:
 
 ```html
-<script src='//api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.1.1/geo-viewport.js'></script>
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/geo-viewport/v0.2.1/geo-viewport.js'></script>
 ```
 
 The script-tag include exports an object called `geoViewport`,
@@ -72,7 +72,7 @@ console.log(center);
 
 ## api
 
-### `viewport(bounds, dimensions)`
+### `viewport(bounds, dimensions, minzoom, maxzoom, tileSize)`
 
 Given a `WSEN` array of bounds and a `[x, y]` array of pixel
 dimensions, return a `{ center: [lon, lat], zoom: zoom }` viewport.
@@ -86,7 +86,7 @@ geoViewport.viewport([
 ], [640, 480])
 ```
 
-### `bounds(center, zoom, dimensions)`
+### `bounds(viewport, zoom, dimensions, tileSize)`
 
 Given a centerpoint as `[lon, lat]` or `{ lon, lat }`, a zoom,
 and dimensions as `[x, y]`, return a bounding box.
@@ -96,3 +96,24 @@ Example:
 ```js
 geoViewport.bounds([-75.03, 35.25], 14, [600, 400])
 ```
+
+## tile sizes
+
+Be aware that these calculations are sensitive to tile size. The default size assumed by this library is 256x256px; however, Mapbox Vector Tiles are 512x512px.
+
+For example, to calculating a bounding box for a classic raster-based 256x256 tile:
+
+```js
+geoViewport.bounds([-75.03, 35.25], 14, [600, 400], 256)
+
+// since 256 is default, you can omit the tileSize param
+geoViewport.bounds([-75.03, 35.25], 14, [600, 400])
+```
+
+To calculate a bounding box for a Mapbox vector tile source, such as an image from the [Mapbox Static Image API](https://www.mapbox.com/api-documentation/#static):
+
+```js
+geoViewport.bounds([-75.03, 35.25], 14, [600, 400], 512)
+```
+
+There's a [handy blog post discussing the issue here](https://www.mapbox.com/blog/512px-map-tile).
