@@ -1,34 +1,34 @@
 {
-  "name": "geo-viewport",
-  "version": "0.2.1",
-  "description": "convert between viewports and extents",
-  "main": "index.js",
-  "scripts": {
-    "test": "tap test/*.js",
-    "build": "browserify -s geoViewport index.js | uglifyjs -c > geo-viewport.js"
-  },
+  "license": "BSD-2-Clause", 
+  "name": "geo-viewport", 
   "repository": {
-    "type": "git",
-    "url": "git@github.com:mapbox/geo-viewport.git"
-  },
-  "keywords": [
-    "geographic",
-    "viewport",
-    "zoom",
-    "scale"
-  ],
-  "author": "Tom MacWright",
-  "license": "BSD",
+    "url": "git@github.com:mapbox/geo-viewport.git", 
+    "type": "git"
+  }, 
+  "author": "Tom MacWright", 
   "bugs": {
     "url": "https://github.com/mapbox/geo-viewport/issues"
-  },
-  "homepage": "https://github.com/mapbox/geo-viewport",
+  }, 
+  "version": "0.2.1", 
   "dependencies": {
     "sphericalmercator": "~1.0.2"
-  },
+  }, 
+  "scripts": {
+    "test": "tap test/*.js", 
+    "build": "browserify -s geoViewport index.js | uglifyjs -c > geo-viewport.js"
+  }, 
+  "keywords": [
+    "geographic", 
+    "viewport", 
+    "zoom", 
+    "scale"
+  ], 
   "devDependencies": {
-    "tap": "^5.7.0",
-    "browserify": "^13.0.0",
-    "uglify-js": "^2.6.2"
-  }
+    "browserify": "^13.0.0", 
+    "uglify-js": "^2.6.2", 
+    "tap": "^5.7.0"
+  }, 
+  "main": "index.js", 
+  "homepage": "https://github.com/mapbox/geo-viewport", 
+  "description": "convert between viewports and extents"
 }
