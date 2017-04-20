@@ -28,7 +28,7 @@ with methods `bounds` and `viewport` documented below.
 ### With Node
 
 ```js
-var geoViewport = require('geo-viewport');
+var geoViewport = require('@mapbox/geo-viewport');
 
 geoViewport.viewport([
     5.668343999999995,
