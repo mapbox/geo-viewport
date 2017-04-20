@@ -10,7 +10,7 @@ or a script tag.
 
 ## Install
 
-    npm install --save geo-viewport
+    npm install --save @mapbox/geo-viewport
 
 Or use a plugin:
 
