@@ -1,4 +1,4 @@
-var SphericalMercator = require('sphericalmercator');
+var SphericalMercator = require('@mapbox/sphericalmercator');
 
 // The SphericalMercator library only accepts a variable
 // tileSize on instantiation, which it uses to pre-cache

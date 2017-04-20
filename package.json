@@ -1,6 +1,6 @@
 {
   "license": "BSD-2-Clause", 
-  "name": "geo-viewport", 
+  "name": "@mapbox/geo-viewport", 
   "repository": {
     "url": "git@github.com:mapbox/geo-viewport.git", 
     "type": "git"
@@ -9,9 +9,9 @@
   "bugs": {
     "url": "https://github.com/mapbox/geo-viewport/issues"
   }, 
-  "version": "0.2.1", 
+  "version": "0.2.2", 
   "dependencies": {
-    "sphericalmercator": "~1.0.2"
+    "@mapbox/sphericalmercator": "~1.0.2"
   }, 
   "scripts": {
     "test": "tap test/*.js", 
