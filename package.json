@@ -11,7 +11,7 @@
   },
   "version": "0.2.2",
   "dependencies": {
-    "@mapbox/sphericalmercator": "~1.0.2"
+    "@mapbox/sphericalmercator": "~1.1.0"
   },
   "scripts": {
     "test": "tap test/*.js",
