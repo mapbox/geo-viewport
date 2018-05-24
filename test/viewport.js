@@ -1,7 +1,15 @@
 var viewport = require('../'),
     test = require('tap').test;
 
-test('viewport', function(t) {
+// Compare float values up to ~1mm precision
+var decDegreesFloatTolerance = 8;
+
+function precisionRound(number, precision) {
+    var factor = Math.pow(10, precision);
+    return Math.round(number * factor) / factor;
+}
+
+test('viewport', function (t) {
 
     t.deepEqual(viewport.viewport([
         5.668343999999995,
@@ -45,11 +53,16 @@ test('viewport', function(t) {
     t.end();
 });
 
-test('bounds for 512px tiles', function(t) {
-    t.deepEqual(
-        viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512),
-        [-77.03945338726044, 38.89697827424865, -77.03365981578827, 38.89843950894583]
-    );
+test('bounds for 512px tiles', function (t) {
+    var bounds = viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512);
+    var xMin = bounds[0];
+    var yMin = bounds[1];
+    var xMax = bounds[2];
+    var yMax = bounds[3];
 
+    t.equal(precisionRound(xMin, decDegreesFloatTolerance), precisionRound(-77.03945338726044, decDegreesFloatTolerance));
+    t.equal(precisionRound(yMin, decDegreesFloatTolerance), precisionRound(38.89697827424865, decDegreesFloatTolerance));
+    t.equal(precisionRound(xMax, decDegreesFloatTolerance), precisionRound(-77.03365981578827, decDegreesFloatTolerance));
+    t.equal(precisionRound(yMax, decDegreesFloatTolerance), precisionRound(38.89843950894583, decDegreesFloatTolerance));
     t.end();
 });
