@@ -66,3 +66,18 @@ test('bounds for 512px tiles', function (t) {
     t.equal(precisionRound(yMax, decDegreesFloatTolerance), precisionRound(38.89843950894583, decDegreesFloatTolerance));
     t.end();
 });
+
+test('bounds for float zooms', function (t) {
+  var zoom = 16.52;
+  var bounds = viewport.bounds([-77.036556, 38.897708], zoom, [1080, 350], 512);
+  var xMin = bounds[0];
+  var yMin = bounds[1];
+  var xMax = bounds[2];
+  var yMax = bounds[3];
+
+  t.equal(precisionRound(xMin, decDegreesFloatTolerance), precisionRound(-77.04059627355818, decDegreesFloatTolerance));
+  t.equal(precisionRound(yMin, decDegreesFloatTolerance), precisionRound(38.8966889687563, decDegreesFloatTolerance));
+  t.equal(precisionRound(xMax, decDegreesFloatTolerance), precisionRound(-77.03251572644183, decDegreesFloatTolerance));
+  t.equal(precisionRound(yMax, decDegreesFloatTolerance), precisionRound(38.89872701662092, decDegreesFloatTolerance));
+  t.end();
+});
