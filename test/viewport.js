@@ -60,10 +60,10 @@ test('bounds for 512px tiles', function (t) {
     var xMax = bounds[2];
     var yMax = bounds[3];
 
-    t.equal(precisionRound(xMin, decDegreesFloatTolerance), precisionRound(-77.03945338726044, decDegreesFloatTolerance));
-    t.equal(precisionRound(yMin, decDegreesFloatTolerance), precisionRound(38.89697827424865, decDegreesFloatTolerance));
-    t.equal(precisionRound(xMax, decDegreesFloatTolerance), precisionRound(-77.03365981578827, decDegreesFloatTolerance));
-    t.equal(precisionRound(yMax, decDegreesFloatTolerance), precisionRound(38.89843950894583, decDegreesFloatTolerance));
+    t.equal(precisionRound(xMin, decDegreesFloatTolerance), -77.03945339);
+    t.equal(precisionRound(yMin, decDegreesFloatTolerance), 38.89697827);
+    t.equal(precisionRound(xMax, decDegreesFloatTolerance), -77.03365982);
+    t.equal(precisionRound(yMax, decDegreesFloatTolerance), 38.89843951);
     t.end();
 });
 
@@ -75,9 +75,9 @@ test('bounds for float zooms', function (t) {
   var xMax = bounds[2];
   var yMax = bounds[3];
 
-  t.equal(precisionRound(xMin, decDegreesFloatTolerance), precisionRound(-77.04059627355818, decDegreesFloatTolerance));
-  t.equal(precisionRound(yMin, decDegreesFloatTolerance), precisionRound(38.8966889687563, decDegreesFloatTolerance));
-  t.equal(precisionRound(xMax, decDegreesFloatTolerance), precisionRound(-77.03251572644183, decDegreesFloatTolerance));
-  t.equal(precisionRound(yMax, decDegreesFloatTolerance), precisionRound(38.89872701662092, decDegreesFloatTolerance));
+  t.equal(precisionRound(xMin, decDegreesFloatTolerance), -77.04059627);
+  t.equal(precisionRound(yMin, decDegreesFloatTolerance), 38.89668897);
+  t.equal(precisionRound(xMax, decDegreesFloatTolerance), -77.03251573);
+  t.equal(precisionRound(yMax, decDegreesFloatTolerance), 38.89872702);
   t.end();
 });
