@@ -9,7 +9,7 @@
   "bugs": {
     "url": "https://github.com/mapbox/geo-viewport/issues"
   },
-  "version": "0.2.2",
+  "version": "0.3.0",
   "dependencies": {
     "@mapbox/sphericalmercator": "~1.1.0"
   },
