@@ -81,3 +81,20 @@ test('bounds for float zooms', function (t) {
   t.equal(precisionRound(yMax, decDegreesFloatTolerance), 38.89872702);
   t.end();
 });
+
+test('viewport for float zooms', function(t) {
+    t.deepEqual(viewport.viewport([
+        5.668343999999995,
+        45.111511000000014,
+        5.852471999999996,
+        45.26800200000002
+    ], [10, 10], undefined, undefined, 256, true), {
+        center: [
+            5.7604079999999955,
+            45.189756500000016
+        ],
+        zoom: 5.984828902182182
+    });
+    
+    t.end();
+});

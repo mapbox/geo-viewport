@@ -19,9 +19,17 @@ function fetchMerc(tileSize) {
     }
 
     return smCache[tileSize];
-};
+}
 
-function viewport(bounds, dimensions, minzoom, maxzoom, tileSize) {
+function getAdjusted(base, ratios, allowFloat) {
+    var adjusted = Math.min(
+            base - (Math.log(ratios[0]) / Math.log(2)),
+            base - (Math.log(ratios[1]) / Math.log(2)));
+    
+    return allowFloat ? adjusted : Math.floor(adjusted);
+}
+
+function viewport(bounds, dimensions, minzoom, maxzoom, tileSize, allowFloat) {
     minzoom = (minzoom === undefined) ? 0 : minzoom;
     maxzoom = (maxzoom === undefined) ? 20 : maxzoom;
     var merc = fetchMerc(tileSize);
@@ -32,9 +40,7 @@ function viewport(bounds, dimensions, minzoom, maxzoom, tileSize) {
         height = bl[1] - tr[1],
         ratios = [width / dimensions[0], height / dimensions[1]],
         center = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
-        adjusted = Math.floor(Math.min(
-            base - (Math.log(ratios[0]) / Math.log(2)),
-            base - (Math.log(ratios[1]) / Math.log(2)))),
+        adjusted = getAdjusted(base, ratios, allowFloat),
         zoom = Math.max(minzoom, Math.min(maxzoom, adjusted));
 
     return { center: center, zoom: zoom };
