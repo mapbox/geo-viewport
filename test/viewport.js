@@ -95,6 +95,33 @@ test('viewport for float zooms', function(t) {
         ],
         zoom: 5.984828902182182
     });
+    t.end();
+});
+
+test('viewport and bounds should return initial values', function(t) {
+
+    const expCenter = [
+      -3.9673465629413203,
+       52.48259851586781
+    ]
+    const tilesize = 512
+    const expZoom = 7.770670445470639
+    const imgsize = [1169, 1240]
+    const bounds = [
+      -5.715601797359881,
+      51.267265845221885,
+      -2.2190913285227603,
+      53.69793118651373
+    ]
+    const actual = viewport.viewport(bounds, imgsize, undefined, undefined, tilesize, true)
+
+    t.deepEqual(actual,  {
+        center: expCenter,
+        zoom: expZoom,
+    });
     
+    const reverted = viewport.bounds([actual.center[0], actual.center[1]], actual.zoom, imgsize, tilesize)
+
+    t.deepEqual(bounds, reverted)
     t.end();
 });
