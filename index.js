@@ -23,9 +23,9 @@ function fetchMerc(tileSize) {
 
 function getAdjusted(base, ratios, allowFloat) {
     var adjusted = Math.min(
-            base - (Math.log(ratios[0]) / Math.log(2)),
-            base - (Math.log(ratios[1]) / Math.log(2)));
-    
+        base - (Math.log(ratios[0]) / Math.log(2)),
+        base - (Math.log(ratios[1]) / Math.log(2)));
+
     return allowFloat ? adjusted : Math.floor(adjusted);
 }
 
@@ -39,11 +39,12 @@ function viewport(bounds, dimensions, minzoom, maxzoom, tileSize, allowFloat) {
         width = tr[0] - bl[0],
         height = bl[1] - tr[1],
         ratios = [width / dimensions[0], height / dimensions[1]],
-        center = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
-        adjusted = getAdjusted(base, ratios, allowFloat),
-        zoom = Math.max(minzoom, Math.min(maxzoom, adjusted));
+        adjusted = getAdjusted(base, ratios, allowFloat);
 
-    return { center: center, zoom: zoom };
+    return {
+        center: merc.ll([(bl[0] + width / 2), (tr[1] + height / 2)], base),
+        zoom: Math.max(minzoom, Math.min(maxzoom, adjusted))
+    };
 }
 
 function bounds(viewport, zoom, dimensions, tileSize) {

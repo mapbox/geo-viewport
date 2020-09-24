@@ -9,8 +9,7 @@ function precisionRound(number, precision) {
     return Math.round(number * factor) / factor;
 }
 
-test('viewport', function (t) {
-
+test('viewport', function(t) {
     t.deepEqual(viewport.viewport([
         5.668343999999995,
         45.111511000000014,
@@ -18,8 +17,8 @@ test('viewport', function (t) {
         45.26800200000002
     ], [640, 480]), {
         center: [
-            5.7604079999999955,
-            45.189756500000016
+            5.760407969355583,
+            45.189810341718136
         ],
         zoom: 11
     });
@@ -31,8 +30,8 @@ test('viewport', function (t) {
         45.26800200000002
     ], [64, 48]), {
         center: [
-            5.7604079999999955,
-            45.189756500000016
+            5.760407969355583,
+            45.189810341718136
         ],
         zoom: 8
     });
@@ -44,8 +43,8 @@ test('viewport', function (t) {
         45.26800200000002
     ], [10, 10]), {
         center: [
-            5.7604079999999955,
-            45.189756500000016
+            5.760407969355583,
+            45.189810341718136
         ],
         zoom: 5
     });
@@ -53,7 +52,7 @@ test('viewport', function (t) {
     t.end();
 });
 
-test('bounds for 512px tiles', function (t) {
+test('bounds for 512px tiles', function(t) {
     var bounds = viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512);
     var xMin = bounds[0];
     var yMin = bounds[1];
@@ -67,19 +66,19 @@ test('bounds for 512px tiles', function (t) {
     t.end();
 });
 
-test('bounds for float zooms', function (t) {
-  var zoom = 16.52;
-  var bounds = viewport.bounds([-77.036556, 38.897708], zoom, [1080, 350], 512);
-  var xMin = bounds[0];
-  var yMin = bounds[1];
-  var xMax = bounds[2];
-  var yMax = bounds[3];
+test('bounds for float zooms', function(t) {
+    var zoom = 16.52;
+    var bounds = viewport.bounds([-77.036556, 38.897708], zoom, [1080, 350], 512);
+    var xMin = bounds[0];
+    var yMin = bounds[1];
+    var xMax = bounds[2];
+    var yMax = bounds[3];
 
-  t.equal(precisionRound(xMin, decDegreesFloatTolerance), -77.04059627);
-  t.equal(precisionRound(yMin, decDegreesFloatTolerance), 38.89668897);
-  t.equal(precisionRound(xMax, decDegreesFloatTolerance), -77.03251573);
-  t.equal(precisionRound(yMax, decDegreesFloatTolerance), 38.89872702);
-  t.end();
+    t.equal(precisionRound(xMin, decDegreesFloatTolerance), -77.04059627);
+    t.equal(precisionRound(yMin, decDegreesFloatTolerance), 38.89668897);
+    t.equal(precisionRound(xMax, decDegreesFloatTolerance), -77.03251573);
+    t.equal(precisionRound(yMax, decDegreesFloatTolerance), 38.89872702);
+    t.end();
 });
 
 test('viewport for float zooms', function(t) {
@@ -90,11 +89,11 @@ test('viewport for float zooms', function(t) {
         45.26800200000002
     ], [10, 10], undefined, undefined, 256, true), {
         center: [
-            5.7604079999999955,
-            45.189756500000016
+            5.760407969355583,
+            45.189810341718136
         ],
         zoom: 5.984828902182182
     });
-    
+
     t.end();
 });
