@@ -9,43 +9,31 @@ function precisionRound(number, precision) {
     return Math.round(number * factor) / factor;
 }
 
+const sampleBounds = [
+    5.668343999999995,
+    45.111511000000014,
+    5.852471999999996,
+    45.26800200000002
+];
+
+const expectedCenter = [
+    5.760407969355583,
+    45.189810341718136
+];
+
 test('viewport', function(t) {
-    t.deepEqual(viewport.viewport([
-        5.668343999999995,
-        45.111511000000014,
-        5.852471999999996,
-        45.26800200000002
-    ], [640, 480]), {
-        center: [
-            5.760407969355583,
-            45.189810341718136
-        ],
+    t.deepEqual(viewport.viewport(sampleBounds, [640, 480]), {
+        center: expectedCenter,
         zoom: 11
     });
 
-    t.deepEqual(viewport.viewport([
-        5.668343999999995,
-        45.111511000000014,
-        5.852471999999996,
-        45.26800200000002
-    ], [64, 48]), {
-        center: [
-            5.760407969355583,
-            45.189810341718136
-        ],
+    t.deepEqual(viewport.viewport(sampleBounds, [64, 48]), {
+        center: expectedCenter,
         zoom: 8
     });
 
-    t.deepEqual(viewport.viewport([
-        5.668343999999995,
-        45.111511000000014,
-        5.852471999999996,
-        45.26800200000002
-    ], [10, 10]), {
-        center: [
-            5.760407969355583,
-            45.189810341718136
-        ],
+    t.deepEqual(viewport.viewport(sampleBounds, [10, 10]), {
+        center: expectedCenter,
         zoom: 5
     });
 
@@ -82,16 +70,8 @@ test('bounds for float zooms', function(t) {
 });
 
 test('viewport for float zooms', function(t) {
-    t.deepEqual(viewport.viewport([
-        5.668343999999995,
-        45.111511000000014,
-        5.852471999999996,
-        45.26800200000002
-    ], [10, 10], undefined, undefined, 256, true), {
-        center: [
-            5.760407969355583,
-            45.189810341718136
-        ],
+    t.deepEqual(viewport.viewport(sampleBounds, [10, 10], undefined, undefined, 256, true), {
+        center: expectedCenter,
         zoom: 5.984828902182182
     });
 
