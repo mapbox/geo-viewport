@@ -23,9 +23,9 @@ function fetchMerc(tileSize) {
 
 function getAdjusted(base, ratios, allowFloat) {
     var adjusted = Math.min(
-            base - (Math.log(ratios[0]) / Math.log(2)),
-            base - (Math.log(ratios[1]) / Math.log(2)));
-    
+        base - (Math.log(ratios[0]) / Math.log(2)),
+        base - (Math.log(ratios[1]) / Math.log(2)));
+
     return allowFloat ? adjusted : Math.floor(adjusted);
 }
 
@@ -33,17 +33,20 @@ function viewport(bounds, dimensions, minzoom, maxzoom, tileSize, allowFloat) {
     minzoom = (minzoom === undefined) ? 0 : minzoom;
     maxzoom = (maxzoom === undefined) ? 20 : maxzoom;
     var merc = fetchMerc(tileSize);
-    var base = maxzoom,
-        bl = merc.px([bounds[0], bounds[1]], base),
-        tr = merc.px([bounds[2], bounds[3]], base),
-        width = tr[0] - bl[0],
-        height = bl[1] - tr[1],
-        ratios = [width / dimensions[0], height / dimensions[1]],
-        center = [(bounds[0] + bounds[2]) / 2, (bounds[1] + bounds[3]) / 2],
-        adjusted = getAdjusted(base, ratios, allowFloat),
-        zoom = Math.max(minzoom, Math.min(maxzoom, adjusted));
+    var base = maxzoom;
+    var bl = merc.px([bounds[0], bounds[1]], base);
+    var tr = merc.px([bounds[2], bounds[3]], base);
+    var width = tr[0] - bl[0];
+    var height = bl[1] - tr[1];
+    var centerPixelX = bl[0] + (width / 2);
+    var centerPixelY = tr[1] + (height / 2);
+    var ratios = [width / dimensions[0], height / dimensions[1]];
+    var adjusted = getAdjusted(base, ratios, allowFloat);
 
-    return { center: center, zoom: zoom };
+    var center = merc.ll([centerPixelX, centerPixelY], base);
+    var zoom = Math.max(minzoom, Math.min(maxzoom, adjusted));
+
+    return { center, zoom };
 }
 
 function bounds(viewport, zoom, dimensions, tileSize) {
