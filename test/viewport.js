@@ -49,12 +49,12 @@ test('viewport in Southern hemisphere', function(t) {
         zoom: 5
     });
 
-    t.deepEqual(viewport.viewport([-10, -60, 10, -30], [500, 250]), {
+    t.deepEqual(viewport.viewport([-10, -50, 10, -30], [500, 250]), {
         center: [
             0,
-            -47.05859720188612
+            -40.74575679866635
         ],
-        zoom: 2
+        zoom: 3
     });
 
     t.end();
