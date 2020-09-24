@@ -21,41 +21,45 @@ const expectedCenter = [
     45.189810341718136
 ];
 
+function isApproximatelyEqual(a, b) {
+    return Math.abs(a - b) < 1e-10;
+}
+
+function areViewportsApproximatelyEqual(v1, v2) {
+    return isApproximatelyEqual(v1.center[0], v2.center[0]) &&
+        isApproximatelyEqual(v1.center[1], v2.center[1]) &&
+        isApproximatelyEqual(v1.zoom, v2.zoom);
+}
+
 test('viewport', function(t) {
-    t.deepEqual(viewport.viewport(sampleBounds, [640, 480]), {
-        center: expectedCenter,
-        zoom: 11
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport(sampleBounds, [640, 480]),
+        { center: expectedCenter, zoom: 11 }
+    ));
 
-    t.deepEqual(viewport.viewport(sampleBounds, [64, 48]), {
-        center: expectedCenter,
-        zoom: 8
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport(sampleBounds, [64, 48]),
+        { center: expectedCenter, zoom: 8 }
+    ));
 
-    t.deepEqual(viewport.viewport(sampleBounds, [10, 10]), {
-        center: expectedCenter,
-        zoom: 5
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport(sampleBounds, [10, 10]),
+        { center: expectedCenter, zoom: 5 }
+    ));
 
     t.end();
 });
 
 test('viewport in Southern hemisphere', function(t) {
-    t.deepEqual(viewport.viewport([10, -20, 20, -10], [500, 250]), {
-        center: [
-            14.999999776482582,
-            -15.058651551491899
-        ],
-        zoom: 5
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport([10, -20, 20, -10], [500, 250]),
+        { center: [14.999999776482582, -15.058651551491899], zoom: 5 }
+    ));
 
-    t.deepEqual(viewport.viewport([-10, -50, 10, -30], [500, 250]), {
-        center: [
-            0,
-            -40.74575679866635
-        ],
-        zoom: 3
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport([-10, -50, 10, -30], [500, 250]),
+        { center: [0, -40.74575679866635], zoom: 3 }
+    ));
 
     t.end();
 });
@@ -90,10 +94,10 @@ test('bounds for float zooms', function(t) {
 });
 
 test('viewport for float zooms', function(t) {
-    t.deepEqual(viewport.viewport(sampleBounds, [10, 10], undefined, undefined, 256, true), {
-        center: expectedCenter,
-        zoom: 5.984828902182182
-    });
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport(sampleBounds, [10, 10], undefined, undefined, 256, true),
+        { center: expectedCenter, zoom: 5.984828902182182 }
+    ));
 
     t.end();
 });
