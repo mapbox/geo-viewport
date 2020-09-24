@@ -40,6 +40,26 @@ test('viewport', function(t) {
     t.end();
 });
 
+test('viewport in Southern hemisphere', function(t) {
+    t.deepEqual(viewport.viewport([10, -20, 20, -10], [500, 250]), {
+        center: [
+            14.999999776482582,
+            -15.058651551491899
+        ],
+        zoom: 5
+    });
+
+    t.deepEqual(viewport.viewport([-10, -60, 10, -30], [500, 250]), {
+        center: [
+            0,
+            -47.05859720188612
+        ],
+        zoom: 2
+    });
+
+    t.end();
+});
+
 test('bounds for 512px tiles', function(t) {
     var bounds = viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512);
     var xMin = bounds[0];
