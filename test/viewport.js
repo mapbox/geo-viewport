@@ -57,8 +57,8 @@ test('viewport in Southern hemisphere', function(t) {
     ));
 
     t.ok(areViewportsApproximatelyEqual(
-        viewport.viewport([-10, -50, 10, -30], [500, 250]),
-        { center: [0, -40.74575679866635], zoom: 3 }
+        viewport.viewport([-10, -60, 10, -30], [500, 250]),
+        { center: [0, -47.05859720188612], zoom: 2 }
     ));
 
     t.end();
