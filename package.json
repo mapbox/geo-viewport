@@ -25,8 +25,8 @@
   ],
   "devDependencies": {
     "browserify": "^13.0.0",
-    "uglify-js": "^2.6.2",
-    "tap": "^5.7.0"
+    "tap": "^5.7.0",
+    "uglify-js": "^3.12.1"
   },
   "main": "index.js",
   "homepage": "https://github.com/mapbox/geo-viewport",
