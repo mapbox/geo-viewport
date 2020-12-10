@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mapbox/geo-viewport.svg)](https://travis-ci.com/mapbox/geo-viewport)
+[![Build Status](https://travis-ci.com/mapbox/geo-viewport.svg)](https://travis-ci.com/mapbox/geo-viewport) [![codecov](https://codecov.io/gh/mapbox/geo-viewport/branch/master/graph/badge.svg)](https://codecov.io/gh/mapbox/geo-viewport)
 
 # geo-viewport
 

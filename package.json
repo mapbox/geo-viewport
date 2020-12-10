@@ -14,8 +14,10 @@
     "@mapbox/sphericalmercator": "~1.1.0"
   },
   "scripts": {
-    "test": "tap test/*.js",
-    "build": "browserify -s geoViewport index.js | uglifyjs -c > geo-viewport.js"
+    "test": "nyc tap test/*.js",
+    "build": "browserify -s geoViewport index.js | uglifyjs -c > geo-viewport.js",
+    "coverage": "nyc report --reporter html && opener coverage/index.html",
+    "upload-coverage": "nyc report --reporter json && codecov -f ./coverage/coverage-final.json"
   },
   "keywords": [
     "geographic",
@@ -25,10 +27,19 @@
   ],
   "devDependencies": {
     "browserify": "^13.0.0",
+    "codecov": "^3.8.1",
+    "nyc": "^15.1.0",
+    "opener": "^1.5.2",
     "tap": "^5.7.0",
     "uglify-js": "^3.12.1"
   },
   "main": "index.js",
   "homepage": "https://github.com/mapbox/geo-viewport",
-  "description": "convert between viewports and extents"
+  "description": "convert between viewports and extents",
+  "nyc": {
+    "all": true,
+    "include": [
+      "index.js"
+    ]
+  }
 }
