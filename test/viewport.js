@@ -64,6 +64,20 @@ test('viewport in Southern hemisphere', function(t) {
     t.end();
 });
 
+test('viewport across the antimeridian', function(t) {
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport([175, -43, 190, -43], [300, 200], undefined, undefined, 512, true, false),
+        { center: [177.5000001490116, -43.00000017011762], zoom: 5.398743777929521 }
+    ));
+    
+    t.ok(areViewportsApproximatelyEqual(
+        viewport.viewport([175, -43, 190, -43], [300, 200], undefined, undefined, 512, true, true),
+        { center: [182.50000018626451, -43.00000017011762], zoom: 3.8137812127148685 }
+    ));
+
+    t.end();
+});
+
 test('bounds for 512px tiles', function(t) {
     var bounds = viewport.bounds([-77.036556, 38.897708], 17, [1080, 350], 512);
     var xMin = bounds[0];
