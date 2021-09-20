@@ -15,11 +15,12 @@ function fetchMerc(tileSize, allowAntiMeridian) {
     tileSize = tileSize || 256;
     antiMeridian = allowAntiMeridian || false;
 
-    if (!smCache[tileSize]) {
-        smCache[tileSize] = new SphericalMercator({ size: tileSize, antimeridian: antiMeridian });
+    var cacheKey = tileSize + String(antiMeridian);
+    if (!smCache[cacheKey]) {
+        smCache[cacheKey] = new SphericalMercator({ size: tileSize, antimeridian: antiMeridian });
     }
 
-    return smCache[tileSize];
+    return smCache[cacheKey];
 }
 
 function getAdjusted(base, ratios, allowFloat) {
