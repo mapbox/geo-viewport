@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.5.0
+
+* Update viewport method to take an optional `allowAntiMeridian` parameter
+
 ## v0.4.0
 
 * Update viewport method to take an optional `allowFloat` parameter to allow float values (h/t @TeaSeaLancs) [#15](https://github.com/mapbox/geo-viewport/pull/15)
