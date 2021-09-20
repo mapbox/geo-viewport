@@ -11,11 +11,12 @@ var smCache = {};
 module.exports.viewport = viewport;
 module.exports.bounds = bounds;
 
-function fetchMerc(tileSize) {
+function fetchMerc(tileSize, antiMeridian) {
     tileSize = tileSize || 256;
+    antiMeridian = antiMeridian || false;
 
     if (!smCache[tileSize]) {
-        smCache[tileSize] = new SphericalMercator({ size: tileSize });
+        smCache[tileSize] = new SphericalMercator({ size: tileSize, antimeridian: antiMeridian });
     }
 
     return smCache[tileSize];
@@ -29,10 +30,10 @@ function getAdjusted(base, ratios, allowFloat) {
     return allowFloat ? adjusted : Math.floor(adjusted);
 }
 
-function viewport(bounds, dimensions, minzoom, maxzoom, tileSize, allowFloat) {
+function viewport(bounds, dimensions, minzoom, maxzoom, tileSize, allowFloat, antiMeridian) {
     minzoom = (minzoom === undefined) ? 0 : minzoom;
     maxzoom = (maxzoom === undefined) ? 20 : maxzoom;
-    var merc = fetchMerc(tileSize);
+    var merc = fetchMerc(tileSize, antiMeridian);
     var base = maxzoom;
     var bl = merc.px([bounds[0], bounds[1]], base);
     var tr = merc.px([bounds[2], bounds[3]], base);
