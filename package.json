@@ -9,9 +9,9 @@
   "bugs": {
     "url": "https://github.com/mapbox/geo-viewport/issues"
   },
-  "version": "0.4.1",
+  "version": "0.5.0",
   "dependencies": {
-    "@mapbox/sphericalmercator": "~1.1.0"
+    "@mapbox/sphericalmercator": "^1.2.0"
   },
   "scripts": {
     "test": "nyc tap test/*.js",
