@@ -13,7 +13,7 @@ module.exports.bounds = bounds;
 
 function fetchMerc(tileSize, allowAntiMeridian) {
     tileSize = tileSize || 256;
-    antiMeridian = allowAntiMeridian || false;
+    var antiMeridian = allowAntiMeridian || false;
 
     var cacheKey = tileSize + String(antiMeridian);
     if (!smCache[cacheKey]) {
